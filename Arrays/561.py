@@ -23,3 +23,24 @@ def arrayPairSum(nums):
   print(_sum)
 
 arrayPairSum([7, 3, 1, 0, 0, 6])
+
+
+# using hashmap
+# https://leetcode.com/problems/array-partition-i/discuss/102201/Python-solution-with-detailed-explanation
+def arrayPairSum_hashMap(nums):
+    res = [0]*20001
+    for x in nums:
+        res[x+10000] += 1
+    s_so_far, adjust = 0, False
+    for idx, freq in enumerate(res):
+        if freq:
+            freq = freq-1 if adjust else freq
+            if freq&1:
+                s_so_far += ((freq//2) + 1)*(idx-10000)
+                adjust = True
+            else:
+                s_so_far += ((freq//2))*(idx-10000)
+                adjust = False
+    return s_so_far
+
+arrayPairSum_hashMap([7, 3, 1, 0, 0, 6])
