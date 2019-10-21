@@ -15,7 +15,7 @@ Example 2:
 
 Input: [-1,-100,3,99] and k = 2
 Output: [3,99,-1,-100]
-Explanation: 
+Explanation:
 rotate 1 steps to the right: [99,-1,-100,3]
 rotate 2 steps to the right: [3,99,-1,-100]
 Note:
@@ -44,12 +44,13 @@ def rotate_cyclic(nums, k):
     k = k % len(nums) # if k >= len(nums) then algorithm does the same thing as k = k % len(nums)
     start = 0 # starting point of chain-replacement
     curr = start
-    tmp = nums[curr] # holds prev value
+    prev = nums[curr]
     for _ in range(len(nums)):
         curr = (curr + k) % len(nums)
-        nums[curr], tmp = tmp, nums[curr]
+        nums[curr], prev = prev, nums[curr]
         if start == curr and start < len(nums) - 1:
             start += 1
             curr = start
-            tmp = nums[curr]
+            prev = nums[curr]
+    return nums
 rotate_cyclic([1, 2, 3, 4, 5, 6, 7], 3)

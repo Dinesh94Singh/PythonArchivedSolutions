@@ -1,4 +1,4 @@
-'''
+"""
 48. Rotate Image
 
 You are given an n x n 2D matrix representing an image.
@@ -11,7 +11,7 @@ You have to rotate the image in-place, which means you have to modify the input 
 
 Example 1:
 
-Given input matrix = 
+Given input matrix =
 [
   [1,2,3],
   [4,5,6],
@@ -41,17 +41,18 @@ rotate the input matrix in-place such that it becomes:
   [12, 6, 8, 9],
   [16, 7,10,11]
 ]
-'''
+"""
+
 
 # def rotate(self, matrix: List[List[int]]) -> None:
 
 def rotate(matrix):
-  for i in range(len(matrix)):
-    for j in range(i, len(matrix[0])):
-      matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-  print('Transporse is', matrix)
-  for i in range(len(matrix)):
-    matrix[i].reverse()
-  print('Rotated is', matrix)
+    for i in range(len(matrix)):
+        for j in range(i, len(matrix[0])):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    for i in range(len(matrix)):
+        matrix[i].reverse()
+    print('Rotated is', matrix)
 
-rotate([[1,2,3], [4,5,6], [7,8,9]])
+
+rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]])

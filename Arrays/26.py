@@ -59,30 +59,33 @@ removeDuplicates1([1, 1, 3, 3, 3, 3, 5, 7, 8, 9])...
 
 '''
 
+
 # Removes duplicates
-def removeDuplicates(arr):
-  j = 0
-  for i in range(0, len(arr)-1): 
-    if arr[i] != arr[i+1]: 
-        arr[j] = arr[i] 
-        j += 1
-    print(arr)
-  print('total number of duplicates are', j)
-  print(arr[:len(arr)-j+1])
+def remove_duplicates(arr):
+    j = 0
+    for i in range(0, len(arr) - 1):
+        if arr[i] != arr[i + 1]:
+            arr[j] = arr[i]
+            j += 1
+        print(arr)
+    print('total number of duplicates are', j)
+    print(arr[:len(arr) - j + 1])
+
 
 # If we can count the total number of duplicates, we can subtract that from the array
-def removeDuplicates1(nums):
-  i = 0
-  # count = 0
-  for j in range(1, len(nums)):
-    if nums[i] != nums[j]:
-      i = i + 1
-      nums[i] = nums[j]
-    '''
+def remove_duplicates1(nums):
+    i = 0
+    # count = 0
+    for j in range(1, len(nums)):
+        if nums[i] != nums[j]:
+            i = i + 1
+            nums[i] = nums[j]
+        '''
     else:
       count = count + 1 # instead of counting the count, [0, i+1] would hold non duplicated array
     '''
-  print(nums[: i+1])
-  return i + 1
+    print(nums[: i + 1])
+    return i + 1
 
-removeDuplicates1([1, 1, 3, 3, 3, 3, 5, 7, 8, 9])
+
+remove_duplicates1([1, 1, 3, 3, 3, 3, 5, 7, 8, 9])

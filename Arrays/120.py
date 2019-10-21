@@ -24,7 +24,7 @@ triangle[i][j] can only add up to triangle[i+1][j-1] or triangle[i+1][j+1]
 '''
 
 '''
-Dynamic Programming
+Dynamic_Programming
 
 1. Top-bottom approach
 2. Bottom-top approach

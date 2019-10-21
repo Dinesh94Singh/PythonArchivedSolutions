@@ -1,4 +1,4 @@
-'''
+"""
 
 11. Container with most water
 
@@ -20,20 +20,22 @@ Solution:
 Leetcode Solution:
 1. Two pointers, and cal max. Each pointer at the extreme ends and find the max.
 
-'''
+"""
 
-def maxArea(height):
-  first = max_area = 0
-  last = len(height) - 1
-  while first < last:
-    minimum = min(height[first], height[last])
-    max_area = max(max_area, (last - first) * minimum)
-    print('max area is', max_area)
-    if height[first] < height[last]:
-      first += 1
-    else:
-      last -= 1
-  return max_area    
+
+def max_area(height):
+    first = max_area = 0
+    last = len(height) - 1
+    while first < last:
+        minimum = min(height[first], height[last])
+        max_area = max(max_area, (last - first) * minimum)
+        print('max area is', max_area)
+        if height[first] < height[last]:
+            first += 1
+        else:
+            last -= 1
+    return max_area
+
 
 height = []
-maxArea(height)
+max_area(height)

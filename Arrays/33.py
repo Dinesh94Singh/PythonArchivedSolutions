@@ -1,4 +1,4 @@
-'''
+"""
 33. Search in Rotated Sorted Array
 
 Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
@@ -25,47 +25,50 @@ Thought Process:
 
 1. Log n should be the time complexity - possibly binary search. The array is sorted, but we just don't know, where it got rotated.
 2. To find where it got rotated, with the middle of the given array, find the smallest element from there using binary search
-'''
+"""
+
 
 def find_rotated_index(nums, left, right):
-  if nums[left] < nums[right]:
-    return 0
-  while left <= right:
-    pivot = (left + right) // 2
-    if nums[pivot] > nums[pivot + 1]:
-      return pivot + 1
-    else:
-      if nums[pivot] < nums[left]:
-        right = pivot - 1
-      else:
-        left = pivot + 1
+    if nums[left] < nums[right]:
+        return 0
+    while left <= right:
+        pivot = (left + right) // 2
+        if nums[pivot] > nums[pivot + 1]:
+            return pivot + 1
+        else:
+            if nums[pivot] < nums[left]:
+                right = pivot - 1
+            else:
+                left = pivot + 1
+
 
 def binary_search(nums, left, right, target):
-  while left <= right:
-    pivot = left + right // 2
-    if nums[pivot] == target:
-      return pivot
-    elif nums[pivot] < target:
-      left = pivot + 1
-    else:
-      right = pivot - 1
+    while left <= right:
+        pivot = left + right // 2
+        if nums[pivot] == target:
+            return pivot
+        elif nums[pivot] < target:
+            left = pivot + 1
+        else:
+            right = pivot - 1
+
 
 def search(nums, target):
-  n = len(nums)
-  if n == 0:
-    return -1
-  if n == 1:
-    return 1 if nums[0] == target else -1
-  
-  rotated_index = find_rotated_index(nums, 0, n-1)
+    n = len(nums)
+    if n == 0:
+        return -1
+    if n == 1:
+        return 1 if nums[0] == target else -1
 
-  if nums[rotated_index] == target:
-    return rotated_index
-  if rotated_index == 0:
-    return binary_search(nums, 0, n-1, target)
-  else:
-    if nums[0] > target:
-      return binary_search(nums, rotated_index, n-1, target)
+    rotated_index = find_rotated_index(nums, 0, n - 1)
+
+    if nums[rotated_index] == target:
+        return rotated_index
+    if rotated_index == 0:
+        return binary_search(nums, 0, n - 1, target)
     else:
-      return binary_search(nums, 0, rotated_index, target)
-    
+        if nums[0] > target:
+            return binary_search(nums, rotated_index, n - 1, target)
+        else:
+            return binary_search(nums, 0, rotated_index, target)
+

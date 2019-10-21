@@ -40,15 +40,17 @@ Explanation: The answer is "wke", with the length of 3.
 
 def lengthOfLongestSubstring(s):
     window_start = 0
+    window_end = 0
     unique_chars = set()
     max_length = float('-inf')
-    for window_end in range(len(s)):
+    while window_end < len(s) and window_start <= window_end:
         if s[window_end] not in unique_chars:
             unique_chars.add(s[window_end])
             max_length = max(max_length, window_end - window_start + 1)
+            window_end += 1
         else:
+            unique_chars.remove(s[window_start])
             window_start += 1
-        print('window is', window_start, window_end)
     return max_length
 lengthOfLongestSubstring('abcabcbb')
 lengthOfLongestSubstring("aabaab!bb")

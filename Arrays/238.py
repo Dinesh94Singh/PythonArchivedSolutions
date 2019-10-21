@@ -1,4 +1,4 @@
-'''
+"""
 
 238. Product of Array Except itself
 
@@ -14,7 +14,8 @@ Note: Please solve it without division and in O(n).
 Follow up:
 Could you solve it with constant space complexity? (The output array does not count as extra space for the purpose of space complexity analysis.)
 
-'''
+"""
+
 
 def productExceptSelf_BruteForce(nums):
     output = []
@@ -26,13 +27,14 @@ def productExceptSelf_BruteForce(nums):
             prod = prod * nums[j]
         output.append(prod)
     print(output)
-    
+
+
 # O(n^2)
 
 
 '''
 
-Solution: 
+Solution:
 
 Instead of dividing the product of all the numbers in the array by the number at a given index to get the corresponding product, we can make use of the product of all the numbers to the left and all the numbers to the right of the index. Multiplying these two individual products would give us the desired result as well.
 
@@ -43,13 +45,32 @@ Left * Right = 80, 62, 320, 40, 160
 
 '''
 
+
 def productExceptSelf(nums):
-  left_array = [1] * len(nums)
-  right_array = [1] * len(nums)
-  for i in range(1, len(nums)):
-    left_array[i] = left_array[i-1] * nums[i-1]
-  for j in range(len(nums) - 2, -1, -1):
-    right_array[j] = right_array[j+1] * nums[j+1]
-  print(left_array)
-  print(right_array)
-  return [left_array[i] * right_array[i] for i in range(len(nums))]
+    left_array = [1] * len(nums)
+    right_array = [1] * len(nums)
+    for i in range(1, len(nums)):
+        left_array[i] = left_array[i - 1] * nums[i - 1]
+    for j in range(len(nums) - 2, -1, -1):
+        right_array[j] = right_array[j + 1] * nums[j + 1]
+    print(left_array)
+    print(right_array)
+    return [left_array[i] * right_array[i] for i in range(len(nums))]
+
+
+def product_except_self_constant_space(nums):
+    length = len(nums)
+    ans = [0] * length
+    ans[0] = 1
+    for i in range(1, length):
+        ans[i] = ans[i-1] * nums[i-1]
+    print(ans)
+    temp = 1
+    for i in reversed(range(length)):
+        ans[i] = ans[i] * temp
+        temp *= nums[i]
+    print(ans)
+    return ans
+
+
+product_except_self_constant_space([4, 5, 1, 8, 2])
