@@ -37,3 +37,21 @@ def longest_palindrome(s):
 
 
 longest_palindrome("babad")
+
+def longest_palindrome_expand_center(s):
+    def helper(s, l, r):
+        while s[l] == s[r] and l < r < len(s):
+            l -= 1
+            r += 1
+        return s[l, r+1]
+    left = 0
+    right = len(s)
+    res = ''
+    for i in range(len(s)):
+        tmp = helper(s, i, i) # even
+        if len(tmp) > len(res):
+            res = tmp
+        tmp = helper(s, i, i+1) # odd
+        if len(tmp) > len(s):
+            res = tmp
+    return res

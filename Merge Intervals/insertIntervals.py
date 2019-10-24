@@ -34,6 +34,3 @@ def insertIntervals(int_a, int_b):
             new_interval[end] = min(left_interval[end], right_interval[end])
             res.append(new_interval)
             i += 1
-
-
-

@@ -39,8 +39,27 @@ def reorder_log_files(logs: list) -> list:
     return sorted(logs, key=custom_sort)
 
 
-reorder_log_files(["dinesh singh", "savya ananda"])
+# reorder_log_files(["dinesh singh", "savya ananda"])
 
-reorder_log_files(["dig1 8 1 5 1", "let1 art can", "dig2 3 6","let2 own kit dig", "let3 art zero"])
-reorder_log_files(["g1 act", "a8 act aoo"])
-reorder_log_files(["dig1 8 1 5 1", "dig2 3 6"])
+# reorder_log_files(["dig1 8 1 5 1", "let1 art can", "dig2 3 6","let2 own kit dig", "let3 art zero"])
+# reorder_log_files(["g1 act", "a8 act aoo"])
+# reorder_log_files(["dig1 8 1 5 1", "dig2 3 6"])
+
+def reorder_log_files_retry(logs):
+    letters = []
+    digits = []
+    for each in logs:
+        if each.split(' ')[1].isalpha():
+            letters.append(each)
+        else:
+            digits.append(each)
+    print(letters)
+    print(digits)
+    letters.sort(key=lambda x: x.split(' ')[0]) # sort based on identifier
+    letters.sort(key=lambda x: x.split(' ', 1)[1]) # sort based on rest of the stuff
+    return letters + digits
+
+
+print(reorder_log_files_retry(["dig1 8 1 5 1", "let1 art can", "dig2 3 6","let2 own kit dig", "let3 art zero"]))
+print(reorder_log_files_retry(["g1 act", "a8 act aoo"]))
+print(reorder_log_files_retry(["dig1 8 1 5 1", "dig2 3 6"]))

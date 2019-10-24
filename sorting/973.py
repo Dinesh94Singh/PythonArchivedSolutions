@@ -26,5 +26,32 @@ Output: [[3,3],[-2,4]]
 (The answer [[-2,4],[3,3]] would also be accepted.)
 
 """
+import heapq
 
-def k_closest(points, k)
+def k_closest(points, k):
+    lowest = float('inf')
+    heap = []
+    for i in range(len(points)):
+        dist = (((points[i][0] - 0) ** 2) + ((points[i][1] - 0) ** 2)) ** 1/2
+        heapq.heappush(heap, (dist, [points[i][0], points[i][1]])) # this should push and heapify based on dist
+    return list(map(lambda x: x[1], heapq.nsmallest(k, heap)))
+"""
+T(C) = O(nlogn)
+S(C) = O(n) (for heap)
+"""
+
+
+def k_closest_sort(points, k):
+    points.sort(key=lambda x: (x[0]-0)**2 + (x[1]-0)**2)
+    return points[:k]
+"""
+T(C) = O(nlogn)
+S(C) = O(1) (for heap)
+"""
+
+k_closest([[1, 3], [-2, 2]], 1)
+k_closest([[3,3],[5,-1],[-2,4]], 2)
+
+
+k_closest_sort([[1, 3], [-2, 2]], 1)
+k_closest_sort([[3,3],[5,-1],[-2,4]], 2)

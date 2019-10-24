@@ -11,5 +11,5 @@ def max_sum_subarray(k, arr):
             windowStart += 1
     return maximum
 
-# max_sum_subarray(5, [1, 3, 2, 6, -1, 4, 1, 8, 2])
+max_sum_subarray(5, [1, 3, 2, 6, -1, 4, 1, 8, 2])
 max_sum_subarray(2, [2, 3, 4, 1, 5])
