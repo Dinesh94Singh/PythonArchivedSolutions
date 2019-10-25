@@ -45,6 +45,16 @@ def most_common_word(paragraph, banned):
 
     return count.most_common(1)[0][0]
 
+def most_common_word_retry(paragraph, banned):
+    for c in "!?',;.":
+        paragraph = paragraph.replace(c, " ")
+    print(paragraph)
+    freq = collections.Counter(word for word in paragraph.lower().split())
+    print(freq.most_common())
+    for each_word, count in freq.most_common():
+        if each_word in banned:
+            continue
+        else:
+            return each_word
 
-most_common_word("Bob hit a ball, the hit BALL flew far after it was hit.", ["hit"])
-
+print(most_common_word_retry("Bob hit a ball, the hit BALL flew far after it was hit.", ["hit"]))
