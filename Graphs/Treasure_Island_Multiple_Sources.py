@@ -29,10 +29,8 @@ def treasure_island(grid):
         return sources
 
     def check_cond(x, y):
-        nonlocal m, n
-
-
-        if x >= 0 and y >= 0 and x < m and y < n:
+        nonlocal m, n, grid
+        if x >= 0 and y >= 0 and x < m and y < n and grid[x][y] != 'D':
             return True
         return False
 
@@ -45,23 +43,25 @@ def treasure_island(grid):
     while queue:
         length = len(queue)
         for i in range(length):
+            # print(visited)
             x, y, dist = queue.popleft()
             if (x, y) not in visited:
                 visited.add((x, y))
             else:
                 continue
             if grid[x][y] == 'X':
-                min_dist = min_dist(min_dist, dist)
+                min_dist = min(min_dist, dist)
+                continue
             for each_dir in dir:
-                if check_cond(x+each_dir[0], y + each_dir[0]):
-                    queue.append((x + each_dir[0], y + each_dir[0], dist + 1))
+                if check_cond(x+each_dir[0], y + each_dir[1]):
+                    queue.append((x + each_dir[0], y + each_dir[1], dist + 1))
     return min_dist if min_dist != float('inf') else -1
 
 
-grid = [['S', 'O', 'O', 'S', 'S'],
- ['D', 'O', 'D', 'O', 'D'],
- ['O', 'O', 'O', 'O', 'X'],
- ['X', 'D', 'D', 'O', 'O'],
- ['X', 'D', 'D', 'D', 'O']]
+grid = [['S', '0', 'O', 'S', 'S'],
+        ['D', '0', 'D', '0', 'D'],
+        ['O', '0', '0', 'O', 'X'],
+        ['0', 'D', 'D', 'O', '0'],
+        ['0', 'D', '0', 'D', 'O']]
 
 treasure_island(grid)
