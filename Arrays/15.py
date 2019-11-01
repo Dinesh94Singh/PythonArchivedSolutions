@@ -20,7 +20,7 @@ A solution set is:
 Solution:
 
 1. Iterate through every number in nums
-2. The number we are iterating is the target and find the other two numbers, like how we did in 1. two sum Problem 
+2. The number we are iterating is the target and find the other two numbers, like how we did in 1. two sum Problem
 3. Using two pointers on two sum L and R (L -> Left to Right) and ( R -> Right to Left)
 4. Sort the array, so we can easily move i around and know how to adjust L and R (Look Cal Total).
 5. If number is same as the number before, we have used it as target previously, so simply continue.
@@ -89,6 +89,5 @@ def threeSum_K(nums, k):
             else:
                 R -= 1
     return res
-
 
 threeSum_K([-1, 1, 2, 1, 3, 0, 0, 1], 3)

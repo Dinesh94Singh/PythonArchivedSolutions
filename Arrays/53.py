@@ -34,7 +34,7 @@ def maxSubArray(nums):
     if nums[i-1] > 0:
       nums[i] += nums[i-1]
     max_sum = max(nums[i], max_sum)
-    print(nums)
+    print(nums, end =" ")
   return max_sum
 
 def maxSubArray_greedy(nums):
@@ -43,9 +43,9 @@ def maxSubArray_greedy(nums):
   print(curr_sum)
   for i in range(1, n):
       curr_sum = max(nums[i], curr_sum + nums[i])
-      print(curr_sum)
+      print(curr_sum, end = " ")
       max_sum = max(max_sum, curr_sum)
-      
+
   return max_sum
 
 maxSubArray_greedy([-2, 1, -3, 4, -1,  2, 1, -5, 4])

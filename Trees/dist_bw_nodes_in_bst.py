@@ -57,5 +57,6 @@ s.lowestCommonAncestor(root, 6, 2)
 # s.lowestCommonAncestor(root, 1, 3)
 
 print(s.dist_bw_nodes(root, 2, 8))
+print(s.dist_bw_nodes(root, 4, 3))
 print(s.dist_bw_nodes(root, 0, 9))
 print(s.dist_bw_nodes(root, 2, 5))

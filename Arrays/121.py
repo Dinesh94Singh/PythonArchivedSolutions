@@ -33,16 +33,4 @@ def maxProfit(prices):
       max_price = prices[i] - min_price
   return max_price if max_price > 0 else 0
 
-maxProfitExam([7,1,5,3,6,4])
-maxProfitExam([7, 6, 4, 3, 1])
-
-
-def maxProfitExam(nums):
-  minimum = float('inf')
-  maximum = float('-inf')
-  for i in range(len(nums)):
-    if nums[i] < minimum:
-      minimum = nums[i]
-    else:
-      maximum = max(maximum, nums[i] - minimum)
-  return maximum if maximum != float('-inf') else 0
+# maxProfitExam([7,1,5,3,6,4])

@@ -29,7 +29,12 @@ def two_sum(nums, target):
         if value in cache:
             res.append([cache.get(value), idx])
         cache[target - value] = idx
-    return res
+    print(res)
+    result = res[0]
+    for each in res:
+        if each[0] > result[0] or each[1] > result[1] or nums[each[0]] + nums[each[1]] > nums[result[0]] + nums[result[1]]:
+            result = each
+    return result
 
-two_sum([1, 10, 25, 35, 60], 90)
-two_sum([20, 50, 40, 25, 30, 10], 90)
+print(two_sum([1, 10, 25, 35, 60], 90))
+print(two_sum([20, 50, 40, 25, 30, 10], 90))

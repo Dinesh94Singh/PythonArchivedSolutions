@@ -23,6 +23,7 @@ def treasure_island(grid):
     queue = deque([(i, j, 0), ])
     visited = set()
     min_dist = float('inf')
+    count = 0
     while queue:
         x, y, dist = queue.popleft()
         if (x, y) not in visited:
@@ -32,6 +33,7 @@ def treasure_island(grid):
         # print(x, y)
         if grid[x][y] == 'X' and x >= 0 and y >= 0 and x < m and y < n:
             print(x, y)
+            count += 1
             # if we reached the treasure location, find the least path to reach here
             min_dist = min(min_dist, dist)
             continue
@@ -43,21 +45,22 @@ def treasure_island(grid):
             queue.append((x, y+1, dist + 1))
         if y < n - 1 and y >= 0 and grid[x][y+1] != 'D':
             queue.append((x, y-1, dist + 1))
+    print('count', count)
     return min_dist if min_dist != float('inf') else -1
 grid = [
  ['O', 'O', 'O', 'O'],
- ['D', 'O', 'D', 'O'],
  ['O', 'O', 'O', 'O'],
- ['X', 'D', 'D', 'O']
+ ['O', 'O', 'O', 'O'],
+ ['O', 'O', 'O', 'X']
 ]
 
 print(treasure_island(grid))
 
 grid2 = [
- ['O', 'O', 'O', '0'],
+ ['O', 'O', 'O', 'O'],
  ['D', 'O', 'D', 'O'],
  ['O', 'O', 'O', 'O'],
- ['0', 'D', 'D', 'X']
+ ['O', 'D', 'D', 'X']
 ]
 
 print(treasure_island(grid2))

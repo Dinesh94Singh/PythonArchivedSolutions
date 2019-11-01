@@ -65,3 +65,5 @@ grid = [['S', '0', 'O', 'S', 'S'],
         ['0', 'D', '0', 'D', 'O']]
 
 treasure_island(grid)
+
+print('.'.join([0, 0, 0]))
