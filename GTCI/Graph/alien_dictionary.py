@@ -40,7 +40,6 @@ from collections import deque
 
 
 def alien_dictionary(words):
-
     # INITIALIZE THE GRAPH
     in_degree = {}
     graph = {}
@@ -50,8 +49,8 @@ def alien_dictionary(words):
             graph[char] = []
 
     # POPULATE THE GRAPH
-    for i in range(len(words)-1):
-        parent, child = words[i], words[i+1]
+    for i in range(len(words) - 1):
+        parent, child = words[i], words[i + 1]
         for j in range(min(len(parent), len(child))):
             if parent[j] != child[j]:
                 in_degree[child[j]] += 1
@@ -77,5 +76,6 @@ def alien_dictionary(words):
             if in_degree[child] == 0:
                 q.append(child)
     return order
+
 
 alien_dictionary(["ba", "bc", "ac", "cab"])
