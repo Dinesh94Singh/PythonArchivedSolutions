@@ -31,3 +31,19 @@ class Solution:
             return max(left, right) + 1
         depth(root)
         return self.ans - 1
+
+class My_Solution:
+    def diameter(self, root):
+        def dfs(root):
+            if not root:
+                return 0
+            L = dfs(root.left)
+            R = dfs(root.right)
+
+            self.dia = max(self.dia, L + R + 1)
+            return max(L, R) + 1
+
+        self.dia = float('-inf')
+        dfs(root)
+
+        return self.dia

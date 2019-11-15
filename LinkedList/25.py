@@ -27,7 +27,7 @@ class ListNode:
 
 def print_list(head):
     p1 = head
-    while p1:rse it
+    while p1:
         print(p1.val)
         p1 = p1.next
 

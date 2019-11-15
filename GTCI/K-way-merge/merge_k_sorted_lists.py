@@ -11,7 +11,6 @@ Input: L1=[5, 8, 9], L2=[1, 7]
 Output: [1, 5, 7, 8, 9]
 """
 
-
 import heapq
 
 
@@ -20,29 +19,30 @@ class ListNode:
         self.value = value
         self.next = None
 
+    # used for the min-heap
+    def __lt__(self, other):
+        return self.value < other.value
 
-def merge_lists(lists):
-    resultHead = None
 
+def merge_k_sorted_lists(lists):
     heap = []
 
     for each in lists:
         heapq.heappush(heap, each)
 
-    res_head = res_tail = None
+    head = tail = None
 
-    while heapq:
-        node = heapq.heappop()
-
-        if res_head == res_tail == None:
-            res_head = res_tail = node
+    while heap:
+        node = heapq.heappop(heap)
+        if head is None:
+            head = node
+            tail = node
         else:
-            res_tail.next = node
-            res_tail = res_tail.next
-
-        heapq.heappush(heap, node.next)
-
-    return res_head
+            tail.next = node
+            tail = tail.next
+        if node.next is not None:
+            heapq.heappush(heap, node.next)
+    return head
 
 
 l1 = ListNode(2)
@@ -56,9 +56,8 @@ l2.next.next = ListNode(7)
 l3 = ListNode(1)
 l3.next = ListNode(3)
 l3.next.next = ListNode(4)
+result = merge_k_sorted_lists([l1, l2, l3])
 
-result = merge_lists([l1, l2, l3])
-print("Here are the elements form the merged list: ", end='')
-while result != None:
+while result:
     print(str(result.value) + " ", end='')
-result = result.next
+    result = result.next

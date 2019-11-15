@@ -1,4 +1,4 @@
-'''
+"""
 
 62. Unique paths
 
@@ -21,7 +21,8 @@ Example 2:
 Input: m = 7, n = 3
 Output: 28
 
-'''
+"""
+
 
 def uniquePath(m, n):
     # @return an integer
@@ -30,6 +31,7 @@ def uniquePath(m, n):
         for j in range(1, n):
             grid[i][j] = grid[i][j-1] + grid[i-1][j]
     print(grid)
-    return grid[-1][-1] # last element in the grid
+    return grid[-1][-1]  # last element in the grid
 
-uniquePath(3, 3)
+
+uniquePath(3, 2)

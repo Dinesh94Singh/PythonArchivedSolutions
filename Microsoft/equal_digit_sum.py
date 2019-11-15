@@ -2,6 +2,7 @@
 https://leetcode.com/discuss/interview-question/365872/
 """
 
+
 def equal_digit_sum(nums):
     def sum_of_digits(digit):
         total = 0
@@ -21,6 +22,7 @@ def equal_digit_sum(nums):
         else:
             cache[digit_sum] = each
     return res if res != float('-inf') else -1
+
 
 print(equal_digit_sum([51, 71, 17, 42]))
 print(equal_digit_sum([42, 33, 60]))
