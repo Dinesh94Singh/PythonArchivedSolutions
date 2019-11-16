@@ -23,9 +23,9 @@ Explanation: The perimeter is the 16 yellow stripes in the image below:
 def islandPerimeter(grid):
     def dfs(r, c):
         nonlocal grid
-        if r >= 0 and r < len(grid) and c >=0 and c < len(grid[1]) and grid[r][c] == -1:
+        if 0 <= r < len(grid) and 0 <= c < len(grid[1]) and grid[r][c] == -1:
             return 0
-        elif r >= 0 and r < len(grid) and c >=0 and c < len(grid[1]) and grid[r][c] == 1:
+        elif 0 <= r < len(grid) and 0 <= c < len(grid[1]) and grid[r][c] == 1:
             grid[r][c] = -1
             return dfs(r-1, c) + dfs(r+1, c) + dfs(r, c-1) + dfs(r, c+1)
         else:

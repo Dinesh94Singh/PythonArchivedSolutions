@@ -1,25 +1,24 @@
-"""
-Given an array of non-negative integers, you are initially positioned at the first index of the array.
+# TIME LIMIT EXCEEDED
 
-Each element in the array represents your maximum jump length at that position.
+class Solution:
+    def jump(self, nums):
+        dp = [float('inf') for _ in range(len(nums))]
+        jump_from = [float('inf') for _ in range(len(nums))]
 
-Your goal is to reach the last index in the minimum number of jumps.
+        dp[0] = 0
+        jump_from[0] = 0
 
-Example:
+        for i in range(1, len(nums)):
+            for j in range(i):
+                if j + nums[j] >= i:
+                    #  from j -> i can reach i by making nums[j] steps
+                    if dp[i] > dp[j] + 1:
+                        dp[i] = dp[j] + 1
+                        jump_from[i] = j
+        return dp[-1]
 
-Input: [2,3,1,1,4]
-Output: 2
-Explanation: The minimum number of jumps to reach the last index is 2.
-    Jump 1 step from index 0 to 1, then 3 steps to the last index.
-Note:
 
-You can assume that you can always reach the last index.
-"""
+s = Solution()
 
-def min_jumps_to_reach_end(nums):
-    dp = [[0 for _ in range(len(nums))] for _ in range(len(nums))]
-    cache = []
-    for i in range(1, len(nums)):
-        for j in range(i, nums[i]):
-            next = min(i + j, len(nums) - 1)
-            cache[next] = min(cache[next], )
+print(s.jump([2, 3, 1, 1, 4]))
+print(s.jump([2, 3, 1, 1, 2, 4, 2, 0, 1, 1]))

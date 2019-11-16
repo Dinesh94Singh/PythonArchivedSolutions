@@ -31,24 +31,24 @@ Input: "{[]}"
 Output: true
 
 """
-
-def isValid(s):
-    stack = []
-    if len(s) == 0:
-        return True
-    if len(s) == 1:
-        return False
-    for each in s:
-        print(stack)
-        if each == '(' or each == '[' or each == '{':
-            stack.append(each)
-        else:
-            top = stack[-1] if len(stack) > 0 else ''
-            if each == ')' and top == '(' or each == ']' and top == '[' or each == '}' and top == '{':
-                stack.pop()
-            else:
-                return False
-    return True if len(stack) == 0 else False
+#
+# def isValid(s):
+#     stack = []
+#     if len(s) == 0:
+#         return True
+#     if len(s) == 1:
+#         return False
+#     for each in s:
+#         print(stack)
+#         if each == '(' or each == '[' or each == '{':
+#             stack.append(each)
+#         else:
+#             top = stack[-1] if len(stack) > 0 else ''
+#             if each == ')' and top == '(' or each == ']' and top == '[' or each == '}' and top == '{':
+#                 stack.pop()
+#             else:
+#                 return False
+#     return True if len(stack) == 0 else False
 
 
 def is_valid(s):
@@ -71,5 +71,25 @@ is_valid('()')
 is_valid('([])')
 is_valid('([}]')
 is_valid('')
-is_valid('}]')
+print(is_valid('}]'))
 
+
+def isValid(s) -> bool:
+    stack = []
+    if len(s) == 0:
+        return True
+    if len(s) == 1:
+        return False
+    for i in range(len(s)):
+        print(len(stack))
+        if s[i] == '(' or s[i] == '{' or s[i] == '[':
+            stack.append(s[i])
+        elif len(stack) > 0 and (stack[-1] == '(' and s[i] == ')') or (stack[-1] == '{' and s[i] == '}') or (
+                stack[-1] == '[' and s[i] == ']'):
+            stack.pop()
+        else:
+            return False
+
+    return len(stack) == 0
+
+print(isValid('}]'))

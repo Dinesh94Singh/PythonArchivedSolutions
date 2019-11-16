@@ -70,19 +70,6 @@ class LRUCache():
         self.capacity = capacity
         self.head, self.tail = DLinkedNode(), DLinkedNode()
 
-        self.head.next = self.tail
-        self.tail.prev = self.head
-
-    def get(self, key):
-        node = self.cache.get(key, None)
-        if not node:
-            return -1
-
-        # move the accessed node to the head;
-        self._move_to_head(node)
-
-        return node.value
-
     def put(self, key, value):
         node = self.cache.get(key)
 

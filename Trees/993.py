@@ -47,3 +47,41 @@ def is_cousins(root, x, y):
         elif x in parent or y in parent:
             return False  # they are in different levels
     return False
+
+
+class Solution():
+    def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
+        queue = deque([(root, None, 0)])
+
+        temp = []
+        while queue:
+            n = len(queue)
+            for idx in range(n):
+                node, parent, level = queue.popleft()
+
+                if node.val == x or node.val == y:
+                    if len(temp) == 1:
+                        # compare the level and parent
+                        other = temp[0]
+                        if level == other[0] and parent != other[1]:
+                            return True
+                        return False
+                    else:
+                        temp.append((level, parent))
+
+                if node.left:
+                    queue.append((node.left, node, level + 1))
+                if node.right:
+                    queue.append((node.right, node, level + 1))
+        return False
+
+
+# [1,2,3,null,4,null,5]
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.right = TreeNode(4)
+root.right.right = TreeNode(5)
+
+s = Solution()
+print(s.isCousins(root, 5, 4))

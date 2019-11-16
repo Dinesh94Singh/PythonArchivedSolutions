@@ -72,3 +72,12 @@ def search(nums, target):
         else:
             return binary_search(nums, 0, rotated_index, target)
 
+
+def search_2(nums):
+    n = len(nums)
+    rotated_index = find_rotated_index(nums, 0, n - 1)
+
+    print(rotated_index)
+
+search_2([3,4,5,1,2])
+search_2([1,2, 3, 4])

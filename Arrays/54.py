@@ -47,7 +47,6 @@ def spiralOrder(matrix):
         c1 += 1; c2 -= 1
     return ans
 
-
 '''
      c1        c2    
   r1 [1, 2, 3, 4],

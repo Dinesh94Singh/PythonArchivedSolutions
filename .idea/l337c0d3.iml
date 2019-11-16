@@ -19,8 +19,9 @@
       <sourceFolder url="file://$MODULE_DIR$/GTCI/2Pointers" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GTCI/merge_intervals" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GTCI/subsets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/epi_judge_python" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (l337c0d3)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">

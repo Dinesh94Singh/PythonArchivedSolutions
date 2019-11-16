@@ -61,3 +61,30 @@ class Solution(object):
                 return ans
 
         return 0
+
+def ladderLength_my_sol(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+    possible_combinations = collections.defaultdict(list)
+    for each_word in wordList:
+        for i in range(len(each_word)):
+            s = each_word[: i] + '#' + each_word[i+1:]
+            possible_combinations[s].append(each_word)
+
+    # print(possible_combinations)
+
+    visited = set()
+    queue = collections.deque([(beginWord, 0)])
+
+    while queue:
+        for _ in range(len(queue)):
+            word, level = queue.popleft()
+            visited.add(word)
+            if word == endWord:
+                return level + 1
+
+            for i in range(len(word)):
+                s = word[: i] + '#' + word[i + 1:]
+
+                for each_possibility in possible_combinations[s]:
+                    if each_possibility not in visited:
+                        queue.append((each_possibility, level + 1))
+    return 0

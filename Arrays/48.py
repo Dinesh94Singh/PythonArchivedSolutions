@@ -56,3 +56,18 @@ def rotate(matrix):
 
 
 rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+
+def rotate_2(grid):
+    """
+    Do not return anything, modify matrix in-place instead.
+    """
+    for i in range(len(grid)):
+        for j in range(i, len(grid[0])):
+            grid[i][j], grid[j][i] = grid[j][i], grid[i][j]
+    for i in range(len(grid)):
+        grid[i].reverse()
+    print(grid)
+    return grid
+
+rotate_2([[1, 2, 3], [4, 5, 6], [7, 8, 9]])

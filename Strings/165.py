@@ -51,7 +51,8 @@ Version strings do not start or end with dots, and they will not be two consecut
 """
 
 
-def compare_versions(v1, v2):
+
+def compareVersion(v1, v2):
     v1_segments = v1.split('.')
     v2_segments = v2.split('.')
 
@@ -69,17 +70,19 @@ def compare_versions(v1, v2):
 
     if i < len(v1_segments):
         # if i has more elements
-        return 1 if int(v1_segments[i]) != 0 else 0
+        return 1 if any([int(x) for x in v1_segments[i:]]) else 0
     elif j < len(v2_segments):
         # if j has more elements
-        return -1 if int(v2_segments[j]) != 0 else 0
+        return -1 if any([int(y) for y in v2_segments[j:]]) != 0 else 0
     return 0
 
 
-compare_versions('0.1', '1.1')
-compare_versions('0.4', '1.7')
-compare_versions('1.7', '0.4')
-compare_versions('7.5.2.3', '7.5.3')
-compare_versions('7.5.2', '7.5.2.6')
-compare_versions('1.01', '1.001')
-compare_versions('1.0.0', '1.0')
+# compare_versions('0.1', '1.1')
+# compare_versions('0.4', '1.7')
+# compare_versions('1.7', '0.4')
+# compare_versions('7.5.2.3', '7.5.3')
+# compare_versions('7.5.2', '7.5.2.6')
+# compare_versions('1.01', '1.001')
+# compare_versions('1.0.0', '1.0')
+# print(compareVersion("1", "1.1"))
+print(compareVersion("1.0", "1"))

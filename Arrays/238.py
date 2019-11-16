@@ -74,3 +74,25 @@ def product_except_self_constant_space(nums):
 
 
 product_except_self_constant_space([4, 5, 1, 8, 2])
+
+
+def productExceptSelf_retry(nums):
+    left = [1 for _ in range(len(nums))]
+    right = [1 for _ in range(len(nums))]
+
+    for idx in range(1, len(nums)):
+        left[idx] = left[idx - 1] * nums[idx - 1]
+
+    print(left)
+
+    temp = 1
+    for i in reversed(range(len(nums))):
+        right[i] = right[i] * temp
+        temp *= nums[i]
+
+    print(right)
+
+    return [left[i] * right[i] for i in range(len(nums))]
+
+productExceptSelf_retry([1, 2, 3, 4])
+
