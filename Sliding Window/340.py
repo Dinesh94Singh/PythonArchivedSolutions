@@ -1,4 +1,4 @@
-'''
+"""
 
 340. Longest Substring with K Distinct Chars
 
@@ -14,7 +14,8 @@ Example 2:
 Input: s = "aa", k = 1
 Output: 2
 Explanation: T is "aa" which its length is 2.
-'''
+"""
+
 
 def longest_substring_with_k_distinct(s, k):
     window_start = 0
@@ -36,5 +37,5 @@ def longest_substring_with_k_distinct(s, k):
                 del char_frequency[left_char]
             window_start += 1  # shrink the window
         # remember the maximum length so far
-        max_length = max(max_length, window_end-window_start + 1)
+        max_length = max(max_length, window_end - window_start + 1)
     return max_length

@@ -8,12 +8,10 @@ def findAllConcatenatedWordsInADict(words):
 
     def dfs(remaining):
         for i in range(len(remaining)):
-            if remaining[: i + 1] in words_dict and remaining[i + 1:] in words_dict:
+            if remaining[: i + 1] in words_dict and remaining[i + 1:] in words_dict:  # formed by 2 words
                 return True
             if remaining[: i + 1] in words_dict and dfs(remaining[i + 1:]):  # can be a combination of 2 or more words
                 return True
-            # if remaining[i + 1:] in words_dict and dfs(remaining[: i + 1]):  # can be a combination of 2 or more words
-            #     return True
         return False
 
     res = []

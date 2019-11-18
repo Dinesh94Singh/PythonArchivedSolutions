@@ -1,5 +1,5 @@
 def piels_equal_height(nums):
-    nums.sort(reverse = True)
+    nums.sort(reverse=True)
     count = 0
     for i in range(len(nums)):
         j = i
@@ -11,5 +11,6 @@ def piels_equal_height(nums):
                 j = i
         print(nums)
     return count
+
 
 piels_equal_height([5, 2, 1])

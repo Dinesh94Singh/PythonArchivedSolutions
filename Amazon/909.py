@@ -40,40 +40,46 @@ The board square with number N*N has no snake or ladder.
 
 from collections import deque
 
-class Solution():
-    def snakesAndLadders(self, board):
-        def get_cords(each_possibility):
-            quot, rem = divmod(each_possibility-1, n)
 
-            row = n - 1 - quot
-            col = rem if quot % 2 == 0 else n - 1 - rem
+class Solution:
+    @staticmethod
+    def snakes_and_ladders(board):
+        def get_coordinates(current_pos: int):
+            quot, rem = divmod(current_pos - 1, len(board))  # -1 because, the index starts at 0
 
-            return row, col
+            row_at = len(board) - quot - 1
+            col_at = rem if row_at % 2 != N % 2 else N - 1 - rem
 
-        n = len(board)
+            return row_at, col_at
+
+        N = len(board)  # given N*N matrix
         dist = {1: 0}
-        queue = deque([1])
+        q = deque([1])
 
-        while queue:
-            cur_pos = queue.popleft()
-            if cur_pos == n*n:
-                return dist[cur_pos]
-            for each_possibility in range(cur_pos + 1, min(cur_pos + 6, n*n)):
-                # get the co-ords
-                r, c = get_cords(each_possibility)
-                if board[r][c] != -1:
-                    each_possibility = board[r][c]
-                if each_possibility not in dist:
-                    dist[each_possibility] = dist[cur_pos] + 1
-                    queue.append(each_possibility)
+        while q:
+            curr_pos = q.popleft()
+            if curr_pos == N * N:
+                print(dist)
+                return dist[curr_pos]
+            for next_pos in range(curr_pos + 1, min(curr_pos + 6, N * N) + 1):
+                # you can only make 6 steps, if we are on the last row, then only make N*N steps
+                row, col = get_coordinates(next_pos)
+
+                if board[row][col] != -1:
+                    next_pos = board[row][col]
+                if next_pos not in dist:
+                    dist[next_pos] = dist[curr_pos] + 1
+                    q.append(next_pos)
+
         return -1
 
-board = [[-1,-1,-1,-1,-1,-1],
-         [-1,-1,-1,-1,-1,-1],
-         [-1,-1,-1,-1,-1,-1],
-         [-1,35,-1,-1,13,-1],
-         [-1,-1,-1,-1,-1,-1],
-         [-1,15,-1,-1,-1,-1]]
+
+board = [[-1, -1, -1, -1, -1, -1],
+         [-1, -1, -1, -1, -1, -1],
+         [-1, -1, -1, -1, -1, -1],
+         [-1, 35, -1, -1, 13, -1],
+         [-1, -1, -1, -1, -1, -1],
+         [-1, 15, -1, -1, -1, -1]]
 
 s = Solution()
-print(s.snakesAndLadders(board))
+print(s.snakes_and_ladders(board))

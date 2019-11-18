@@ -43,7 +43,6 @@ def treasure_island(grid):
     while queue:
         length = len(queue)
         for i in range(length):
-            # print(visited)
             x, y, dist = queue.popleft()
             if (x, y) not in visited:
                 visited.add((x, y))

@@ -12,6 +12,7 @@ Step 3: reducing 2 -> 1 [1, 1, 1]
 So final number of steps required is 3.
 """
 
+
 def min_steps_to_make_piles_equal(piles):
     # does it contain duplicates ?? yes
     piles.sort(reverse=True)
@@ -21,7 +22,7 @@ def min_steps_to_make_piles_equal(piles):
     while end < len(piles):
         # 5, 5, 2, 2, 1
         if piles[start] == piles[end]:
-            end += 1 # find for a better sol
+            end += 1  # find for a better sol
         else:
             # when they are not equal make piles[start] = piles[end] and increment start till start == end
             while start <= end:
@@ -33,6 +34,7 @@ def min_steps_to_make_piles_equal(piles):
             start = 0
             end += 1
     return count
+
 
 print(min_steps_to_make_piles_equal([5, 2, 1]))
 print(min_steps_to_make_piles_equal([7, 7, 4, 7, 1]))
