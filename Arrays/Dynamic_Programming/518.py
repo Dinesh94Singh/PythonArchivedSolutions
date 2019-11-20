@@ -46,8 +46,5 @@ class Solution:
         return dp[amount]
 
 
-
-
-
 s = Solution()
 print(s.change(100, [1, 101, 102, 103]))
