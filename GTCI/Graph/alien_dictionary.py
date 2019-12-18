@@ -79,3 +79,56 @@ def alien_dictionary(words):
 
 
 alien_dictionary(["ba", "bc", "ac", "cab"])
+
+
+class Solution:
+    """
+    [
+      "wrt",
+      "wrf",
+      "er",
+      "ett",
+      "rftt"
+    ]
+
+    Output: "wertf"
+    """
+    
+    def alienOrder(self, words: List[str]) -> str:
+        graph = {}
+        in_order = {}
+
+        # at max we will have 26 chars
+
+        for i in range(26):
+            graph[i] = []
+            in_order[i] = 0
+
+        for i in range(len(words) - 1):
+            curr_word, next_word = words[i], words[i+1]
+            for j in range(min(len(curr_word), len(next_word))):
+                if curr_word[j] < next_word[j]:
+                    t1 = ord(next_word[j]) - 97
+                    t2 = ord(curr_word[j]) - 97
+                    
+                    in_order[t1] += 1
+                    graph[t2].append(t1)
+
+        print(graph, in_order)
+
+        sources = deque([])
+
+        for i in range(26):
+            if in_order[i] == 0:
+                sources.append(i)
+
+        print(sources)
+        order = []
+
+        while sources:
+            node = sources.popleft()
+            for each_child in graph[node]:
+                in_order[each_child] -= 1
+                if in_order[each_child] == 0:
+                    sources.append(each_child)
+        
