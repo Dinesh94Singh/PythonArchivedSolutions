@@ -74,7 +74,7 @@ def find_employee_free_time(schedule):
             result.append(Interval(previousInterval.end,
                                    queueTop.interval.start))
             previousInterval = queueTop.interval
-        else:  # overlapping intervals, update the previousInterval if needed
+        else:  # overlapping intervals, update dthe previousInterval if needed
             if previousInterval.end < queueTop.interval.end:
                 previousInterval = queueTop.interval
 

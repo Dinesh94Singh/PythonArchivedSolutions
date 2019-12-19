@@ -20,6 +20,8 @@ import collections
 
 class Solution:
     def critical_connections(self, n, connections):
+
+        # Construct a graph
         dic = collections.defaultdict(list)
         for c in connections:
             u, v = c
@@ -34,7 +36,7 @@ class Solution:
         def find(u):
             nonlocal timer
 
-            visited[u] = True
+            visited[u] = True # don't want to revisit the same node
             depth[u], lowest[u] = timer, timer
             timer += 1
 
@@ -49,6 +51,15 @@ class Solution:
                     lowest[u] = min(lowest[u], lowest[v])
 
         find(0)
+        critical_nodes = []
+        for each in res:
+            if len(dic[each[0]]) > len(dic[each[1]]):
+                critical_nodes.append(each[0])
+            else:
+                critical_nodes.append(each[1])
+
+        print(critical_nodes)
+
         return res
 
 s = Solution()

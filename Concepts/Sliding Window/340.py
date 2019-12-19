@@ -39,3 +39,32 @@ def longest_substring_with_k_distinct(s, k):
         # remember the maximum length so far
         max_length = max(max_length, window_end - window_start + 1)
     return max_length
+
+import collections
+
+def retry(s, k):
+    def lengthOfLongestSubstringKDistinct(s: str, k: int) -> int:
+
+        start = 0
+        end = 0
+
+        hm = collections.defaultdict(int)
+        ans = float('-inf')
+
+        while end < len(s):
+            hm[s[end]] += 1
+            while start <= end and len(hm) > k:
+                hm[s[start]] -= 1
+
+                if hm[s[start]] == 0:
+                    del hm[s[start]]
+
+                start += 1
+            ans = max(ans, end - start + 1)
+            end += 1
+
+        return ans
+
+    print(lengthOfLongestSubstringKDistinct(s, k))
+
+retry('ecaba', 2)

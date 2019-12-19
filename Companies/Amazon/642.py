@@ -116,3 +116,7 @@ class AutocompleteSystem(object):
 # Your AutocompleteSystem object will be instantiated and called as such:
 # obj = AutocompleteSystem(sentences, times)
 # param_1 = obj.input(c)
+
+
+system = AutocompleteSystem(["i love you", "island","ironman", "i love leetcode"], [5,3,2,2])
+system.input('i')

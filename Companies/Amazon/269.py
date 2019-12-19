@@ -1,5 +1,6 @@
 from collections import deque
 
+
 def alienOrder(words):
     # using graph
 
@@ -50,5 +51,6 @@ def alienOrder(words):
 
     return ''.join(res)
 
-print(alienOrder(["za","zb","ca","cb"]))
-print(alienOrder(["ri","xz","qxf","jhsguaw","dztqrbwbm","dhdqfb","jdv","fcgfsilnb","ooby"]))
+
+print(alienOrder(["za", "zb", "ca", "cb"]))
+print(alienOrder(["ri", "xz", "qxf", "jhsguaw", "dztqrbwbm", "dhdqfb", "jdv", "fcgfsilnb", "ooby"]))

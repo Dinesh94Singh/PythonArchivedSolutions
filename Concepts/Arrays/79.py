@@ -46,3 +46,45 @@ def dfs(board, i, j, word):
         board, i, j - 1, word[1:])
     board[i][j] = temp
     return res
+
+
+def retry(board, word):
+    rows = len(board)
+    cols = len(board[0]) if rows > 0 else 0
+
+    ans = False
+
+    def dfs(r, c, word):
+        nonlocal ans
+        print(word)
+        if word == '':
+            ans = True
+
+        temp = board[r][c]
+        board[r][c] = '#'
+
+        res = False
+        for row, col in [(r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)]:
+
+            if 0 <= row < rows and 0 <= col < cols:
+                if board[row][col] == word[0]:
+                    res = res or dfs(row, col, word[1:])
+
+        board[r][c] = temp
+        return res
+
+    for i in range(rows):
+        for j in range(cols):
+            if board[i][j] == word[0]:
+                dfs(i, j, word[1:])
+
+    return ans
+
+board = [
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+
+word = 'ABCCED'
+retry(board, word)

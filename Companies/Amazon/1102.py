@@ -29,8 +29,27 @@ Input: [[3,4,6,3,4],[0,2,1,1,7],[8,8,3,2,7],[3,2,4,9,8],[4,1,2,0,0],[4,6,5,4,3]]
 Output: 3
 """
 
+import heapq
 
 class Solution:
+    def maximumMinimumPath(self, matrix):
+        de = ((1, 0), (0, 1), (-1, 0), (0, -1))
+        rl, cl = len(matrix), len(matrix[0])
+        q = [(-matrix[0][0], 0, 0)]
+        memo = [[1 for _ in range(cl)] for _ in range(rl)] # visited array
+        while q:
+            t, x, y = heapq.heappop(q)
+            if x == rl - 1 and y == cl - 1:
+                return -t
+            for d in de:
+                nx = x + d[0]
+                ny = y + d[1]
+                if 0 <= nx < rl and 0 <= ny < cl and memo[nx][ny]:
+                    memo[nx][ny] = 0
+                    heapq.heappush(q, (max(t, -matrix[nx][ny]), nx, ny))
+
+
+class Solution_Doesnt_Work:
     def maximumMinimumPath(self, grid):
         def check_cond(r, c):
             if 0 <= r < len(grid) and 0 <= c < len(grid[0]) and grid[r][c] != 'X':
