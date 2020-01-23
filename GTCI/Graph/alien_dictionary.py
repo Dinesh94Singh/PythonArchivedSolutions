@@ -37,7 +37,7 @@ From the above two points we can conclude that the correct character order is: "
 """
 
 from collections import deque
-
+from typing import List
 
 def alien_dictionary(words):
     # INITIALIZE THE GRAPH
@@ -79,6 +79,8 @@ def alien_dictionary(words):
 
 
 alien_dictionary(["ba", "bc", "ac", "cab"])
+
+print(alien_dictionary(["za", "zb", "ca", "cb"]))
 
 
 class Solution:

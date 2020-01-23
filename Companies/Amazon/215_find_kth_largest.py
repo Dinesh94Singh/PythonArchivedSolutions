@@ -2,6 +2,7 @@
 215. Find Kth Largest with Quick Select algorithm
 """
 
+import random
 
 class Solution:
     def findKthLargest(self, nums, k):
@@ -56,4 +57,4 @@ class Solution:
 
 
 s = Solution()
-print(s.findKthLargest([1, 2, 3, 4, 5, 6, 7, 8]))
+print(s.findKthLargest([1, 2, 3, 4, 5, 6, 7, 8], 3))

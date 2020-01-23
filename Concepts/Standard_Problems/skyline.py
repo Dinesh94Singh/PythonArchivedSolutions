@@ -3,7 +3,7 @@
 class BuildingPoint(object):
 
     def __init__(self, point, is_start, height):
-        self.point = point;
+        self.point = point
         self.is_start = is_start
         self.height = height
 
@@ -17,7 +17,7 @@ class BuildingPoint(object):
                 h1 = self.height
 
             if other.is_start:
-                h2 = -other.height;
+                h2 = -other.height
             else:
                 h2 = other.height
 
@@ -59,4 +59,6 @@ def get_skyline(buildings):
 
 if __name__ == '__main__':
     buildings = [[1, 3, 4], [3, 4, 4], [2, 6, 2], [8, 11, 4], [7, 9, 3], [10, 11, 2]]
+    print(get_skyline(buildings))
+    buildings = [[0, 2, 3], [2, 5, 3]]
     print(get_skyline(buildings))

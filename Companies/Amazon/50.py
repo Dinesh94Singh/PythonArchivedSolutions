@@ -33,6 +33,7 @@ class Solution_Iterative:
         pow = 1
         while n:
             if n & 1:
+                # check for odd / even
                 pow *= x
             x *= x
             n >>= 1

@@ -62,11 +62,12 @@ class Solution(object):
 
         return 0
 
+
 def ladderLength_my_sol(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
     possible_combinations = collections.defaultdict(list)
     for each_word in wordList:
         for i in range(len(each_word)):
-            s = each_word[: i] + '#' + each_word[i+1:]
+            s = each_word[: i] + '#' + each_word[i + 1:]
             possible_combinations[s].append(each_word)
 
     # print(possible_combinations)
