@@ -1,6 +1,6 @@
 """
 
-Dijkstras Algorithm: => dist(b) = min(dist_reach_nei + cost_from_nei_to_b, prev_dist_to_reach_b)
+Dijkstra's Algorithm: => dist(b) = min(dist_reach_nei + cost_from_nei_to_b, prev_dist_to_reach_b)
 ===================
 - Given a graph and a source vertex in the graph, find shortest paths from source to all vertices in the given graph.
 - Without knowing the shortest path to all the vertices, you cannot confirm that, a particular path is the shortest path
@@ -14,7 +14,7 @@ We maintain two sets,
 At every step of the algorithm, we find a vertex which is in the other set (set of not yet included) and has a minimum
 distance from the source.
 
-LeetCode Problems with Dijkstras - Find the solutions in Graph's tab
+LeetCode Problems with Dijkstra's - Find the solutions in Graph's tab
 
 - https://leetcode.com/problems/cheapest-flights-within-k-stops/
 
@@ -31,12 +31,14 @@ We can summarise this as below-
 2) One Source, All Destination –
 → Use BFS (For Unweighted Graphs)
 → Use Dijkstra (For Weighted Graphs without negative weights)
-→ Use Bellman Ford (For Weighted Graphs with negative weights)
+→ Use Bellman Ford (For Weighted Graphs with negative weights) (if there is a Negative edge-cycle can't find min-edge)
 
 3) Between every pair of nodes-
 → Floyd-Warshall
 → Johnson’s Algorithm
 
+4) No source, but minimum spanning tree -
+-> Prim's and Kruskal's
 """
 
 

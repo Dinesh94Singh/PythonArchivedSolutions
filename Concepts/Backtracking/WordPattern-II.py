@@ -77,4 +77,4 @@ string = "xyzabcxzyabc"
 pat2 = "aaaa"
 string2 = "asdasdasdasd"
 
-print(sol.word_pattern(string2, pat2));
+print(sol.word_pattern(string2, pat2))

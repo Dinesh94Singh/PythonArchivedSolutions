@@ -51,6 +51,7 @@ def generate_parentheses(n):
     ans = []
     generate()
     print(ans)
+    print(count, ' is the count')
 
 
 generate_parentheses(3)
