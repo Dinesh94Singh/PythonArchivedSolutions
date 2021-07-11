@@ -40,3 +40,43 @@ class Solution():
 
 s = Solution()
 print(s.findLadders('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log', 'cog']))
+
+
+import collections
+from typing import List
+
+
+def findLadders(beginWord, endWord, wordList):
+    def backtrack(source: str) -> List[List[str]]:
+        if source == endWord:
+            return [[x]]
+
+        r = []
+        for succ in tree[source]:
+            for path in backtrack(succ):
+                r.append([source] + path)
+        return r
+
+    tree = collections.defaultdict(set)
+    words = set(wordList)
+    n = len(beginWord)
+    if endWord not in wordList:
+        return []
+    found, q, nq = False, {beginWord}, set()
+    while q and not found:
+        words -= set(q)
+        for x in q:
+            for y in [x[:i] + c + x[i + 1:] for i in range(n) for c in 'qwertyuiopasdfghjklzxcvbnm']:
+                if y in words:
+                    if y == endWord:
+                        found = True
+                    else:
+                        nq.add(y)
+                    tree[x].add(y)
+        q, nq = nq, set()
+
+    return backtrack(beginWord)
+
+
+print(findLadders("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
+

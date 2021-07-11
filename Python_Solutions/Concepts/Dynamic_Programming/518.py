@@ -34,6 +34,37 @@ the number of coins is less than 500
 the answer is guaranteed to fit into signed 32-bit integer
 """
 
+class Solution2:
+    def change(self, amount: int, coins: List[int]) -> int:
+        if not amount:
+            return 1
+
+        if not coins or len(coins) == 0:
+            return 0
+        
+        cache = [[-1 for _ in range(amount + 1)] for _ in range(len(coins))]
+        def rec_helper(remaining, idx):
+            nonlocal cache
+
+            if idx == len(coins):
+               return 0
+            
+            if remaining == 0:
+                return 1
+
+            if cache[idx][remaining] != -1:
+                return cache[idx][remaining]
+            
+            s1 = 0
+            if coins[idx] <= remaining:
+                s1 = rec_helper(remaining - coins[idx], idx) # pick a coin
+            s2 = rec_helper(remaining, idx + 1)
+
+            cache[idx][remaining] = s1 + s2
+            return cache[idx][remaining]
+
+        r = rec_helper(amount, 0)
+        return r
 
 class Solution:
     def change(self, amount: int, coins) -> int:

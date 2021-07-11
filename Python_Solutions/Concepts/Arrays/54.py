@@ -53,3 +53,35 @@ def spiralOrder(matrix):
      [5, 6, 7, 8],
   r2 [9,10,11,12]
 '''
+
+class Solution2:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        if not matrix:
+            return []
+        rows = len(matrix)
+        cols = len(matrix[0]) if rows > 0 else 0
+
+        r1, r2, c1, c2 = 0, rows - 1, 0, cols - 1
+
+        res = []
+
+        while r1 <= r2 and c1 <= c2:
+            for i in range(c1, c2 + 1):
+                res.append(matrix[r1][i])
+            r1 += 1
+
+            for i in range(r1, r2 + 1):
+                res.append(matrix[i][c2])
+            c2 -= 1
+
+            if r1 <= r2:
+                for i in range(c2, c1 - 1, -1):
+                    res.append(matrix[r2][i])
+                r2 -= 1
+
+            if c1 <= c2:
+                for i in range(r2, r1 - 1, -1):
+                    res.append(matrix[i][c1])
+                c1 += 1
+
+        return res
